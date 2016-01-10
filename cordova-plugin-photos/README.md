@@ -4,7 +4,5 @@
 
 cordova plugin add [path of plugin]
 
-目前仅支持ios，android版本会陆续更新。
-
 ----------------------Author----------------------
 46517115@qq.com
