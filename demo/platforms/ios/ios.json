@@ -1,0 +1,43 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"photosPlugin\"><param name=\"ios-package\" value=\"CDVPhotosPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "photosDemo"
+        },
+        "Cordova-plugin-photos": {
+            "PACKAGE_NAME": "photosDemo"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "file": "plugins/Cordova-plugin-photos/www/Photos.js",
+            "id": "Cordova-plugin-photos.Photos",
+            "pluginId": "Cordova-plugin-photos",
+            "clobbers": [
+                "Photos"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-plugin-whitelist": "1.2.0",
+        "Cordova-plugin-photos": "0.0.1 beta 1"
+    }
+}

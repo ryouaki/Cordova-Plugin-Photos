@@ -1,0 +1,17 @@
+{
+  "name": "Cordova-plugin-photos",
+  "version": "0.0.1 beta 1",
+  "description": "Cordova-plugin-photos used for get photos from devices",
+  "cordova": {
+    "id": "Cordova-plugin-photos",  
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    
+  },
+  "keywords": [
+  ],
+  "author": "Ryouaki(46517115@qq.com)"
+}
