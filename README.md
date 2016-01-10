@@ -26,8 +26,8 @@ Photos.getRealPhoto(function(arguments){
 {data:......}
 
 目前仅支持ios，android版本会陆续更新。
-!https://github.com/ryouaki/Cordova-Plugin-Photos/blob/master/21B8E8ED5D4358FFBB5F5B7FD3C59D60.png
-!https://github.com/ryouaki/Cordova-Plugin-Photos/blob/master/2FEB64EF6D6D57AE001A15E5C06A21BE.png
+![image](https://github.com/ryouaki/Cordova-Plugin-Photos/blob/master/21B8E8ED5D4358FFBB5F5B7FD3C59D60.png)
+![image](https://github.com/ryouaki/Cordova-Plugin-Photos/blob/master/2FEB64EF6D6D57AE001A15E5C06A21BE.png)
 
 #----------------------Author----------------------
 46517115@qq.com
