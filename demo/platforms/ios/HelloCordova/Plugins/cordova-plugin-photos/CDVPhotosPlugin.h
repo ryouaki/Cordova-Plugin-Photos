@@ -5,6 +5,7 @@
 
 - (void)getThumbPhotos:(CDVInvokedUrlCommand*)command;
 - (void)getRealPhoto:(CDVInvokedUrlCommand*)command;
+- (void)getMultiRealPhotos:(CDVInvokedUrlCommand*)command;
 - (void)pluginInitialize;
 
 @end

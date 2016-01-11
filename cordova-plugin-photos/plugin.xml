@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-           id="Cordova-plugin-photos"
-      version="0.0.1 beta 1">
-    <name>Cordova-plugin-photos</name>
+           id="cordova-plugin-photos"
+      version="1.0.1">
+    <name>cordova-plugin-photos</name>
     <description>Cordova-plugin-photos used for get photos from devices</description>
     
     <js-module src="www/Photos.js" name="Photos">

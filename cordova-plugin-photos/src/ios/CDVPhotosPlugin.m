@@ -49,10 +49,24 @@ static NSMutableArray *allPhotosURLs = nil ;
 - (void)getThumbPhotos:(CDVInvokedUrlCommand*)command
 {
     [self.commandDelegate runInBackground:^ {
+        int mIndex = 0;
+        int maxNum = 20;
+        int mWidth = 30;
+        int mHeight= 30;
+        
         NSString* index = [command argumentAtIndex:0];
-        NSString* num = [command argumentAtIndex:1];
-        int mIndex = [index intValue];
-        int maxNum = [num intValue];
+        NSString* num   = [command argumentAtIndex:1];
+        NSString* width = [command argumentAtIndex:2];
+        NSString* height= [command argumentAtIndex:3];
+        
+        if(index != nil)
+            mIndex = [index intValue];
+        if(num != nil)
+            maxNum = [num intValue];
+        if(width != nil)
+            mWidth = [width intValue];
+        if(height != nil)
+            mHeight = [height intValue];
         
         PHImageManager* imageManager = [PHImageManager defaultManager];
         PHImageRequestOptions* imageRequestOptions = [[PHImageRequestOptions alloc] init];
@@ -97,7 +111,7 @@ static NSMutableArray *allPhotosURLs = nil ;
                 __block NSString* data = nil;
                 NSString* url = asset.localIdentifier;
                 [imageManager requestImageForAsset:asset
-                                        targetSize:CGSizeMake(30, 30)
+                                        targetSize:CGSizeMake(mWidth, mHeight)
                                        contentMode:PHImageContentModeAspectFill
                                            options:imageRequestOptions
                                      resultHandler:^(UIImage *result, NSDictionary *info) {
@@ -132,7 +146,7 @@ static NSMutableArray *allPhotosURLs = nil ;
         PHFetchResult *dstPhoto = [PHAsset fetchAssetsWithLocalIdentifiers:@[param] options:nil];
         if(dstPhoto == nil || dstPhoto.count <= 0) {
             CDVPluginResult* result;
-            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"This URL is invalid!"];
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"{\"data\":\" \"}"];
             [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
             return;
         } else {
@@ -161,6 +175,57 @@ static NSMutableArray *allPhotosURLs = nil ;
                                          res = nil;
                                          
                                      }];
+        }
+    }];
+}
+
+- (void)getMultiRealPhotos:(CDVInvokedUrlCommand*)command
+{
+    [self.commandDelegate runInBackground:^ {
+        NSArray* param = [command argumentAtIndex:0];
+        
+        PHFetchResult *dstPhoto = [PHAsset fetchAssetsWithLocalIdentifiers:param options:nil];
+        if(dstPhoto == nil || dstPhoto.count <= 0) {
+            CDVPluginResult* result;
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"[]"];
+            [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+            return;
+        } else {
+            PHImageRequestOptions* imageRequestOptions = [[PHImageRequestOptions alloc] init];
+            imageRequestOptions.version = PHImageRequestOptionsVersionCurrent;
+            imageRequestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
+            imageRequestOptions.resizeMode = PHImageRequestOptionsResizeModeFast;
+            imageRequestOptions.synchronous = true;
+            
+            NSString* jsonData = @"[";
+            CDVPluginResult* result;
+            
+            for (PHAsset* asset in dstPhoto) {
+                __block NSString* data = nil;
+                NSString* url = asset.localIdentifier;
+                [[PHImageManager defaultManager] requestImageDataForAsset:asset
+                                                                  options:imageRequestOptions
+                                                            resultHandler:^(NSData *__nullable imageData, NSString *__nullable dataUTI, UIImageOrientation orientation, NSDictionary *__nullable info) {
+                                                                UIImage *image = [[UIImage alloc]initWithData:imageData];
+                                                                data = image2DataURL(image);
+                                                            }];
+                if(data==nil) {
+                    continue;
+                }
+                NSString* str = [[NSString alloc] initWithFormat:@"{\"url\":\"%@\",\"data\":\"%@\"},",url,data];
+                jsonData = [jsonData stringByAppendingString:str];
+                data = nil;
+            }
+            jsonData = [jsonData substringWithRange:NSMakeRange(0, [jsonData length] - 1)];
+            jsonData = [jsonData stringByAppendingString:@"]"];
+            
+            result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:jsonData];
+            [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+            
+            dstPhoto = nil;
+            imageRequestOptions = nil;
+            jsonData = nil;
+            result = nil;
         }
     }];
 }

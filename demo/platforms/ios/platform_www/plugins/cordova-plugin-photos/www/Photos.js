@@ -1,4 +1,4 @@
-cordova.define("Cordova-plugin-photos.Photos", function(require, exports, module) { var argscheck = require('cordova/argscheck'),
+cordova.define("cordova-plugin-photos.Photos", function(require, exports, module) { var argscheck = require('cordova/argscheck'),
     exec = require('cordova/exec');
   
 var photosExport = {};
@@ -9,6 +9,10 @@ photosExport.getThumbPhotos = function(successCallback, errorCallback, args) {
 
 photosExport.getRealPhoto = function(successCallback, errorCallback, args) {
   exec(successCallback, errorCallback, "photosPlugin", "getRealPhoto", args);
+};
+
+photosExport.getMultiRealPhotos = function(successCallback, errorCallback, args) {
+  exec(successCallback, errorCallback, "photosPlugin", "getMultiRealPhotos", args);
 };
 
 module.exports = photosExport;

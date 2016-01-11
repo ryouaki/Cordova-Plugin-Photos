@@ -1,0 +1,88 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Applications/node/bin/node',
+1 verbose cli   '/Applications/node/bin/npm',
+1 verbose cli   'publish',
+1 verbose cli   './cordova-plugin-photos' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.1
+4 verbose publish [ './cordova-plugin-photos' ]
+5 silly cache add args [ './cordova-plugin-photos', null ]
+6 verbose cache add spec ./cordova-plugin-photos
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: './cordova-plugin-photos',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: './cordova-plugin-photos',
+7 silly cache add   spec: '/Users/a610/Documents/VaniBluepageV3/Cordova-plugins-photos/cordova-plugin-photos',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/a610/.npm/cordova-plugin-photos/1.0.1/package.tgz not in flight; packing
+9 verbose tar pack [ '/Users/a610/.npm/cordova-plugin-photos/1.0.1/package.tgz',
+9 verbose tar pack   '/Users/a610/Documents/VaniBluepageV3/Cordova-plugins-photos/cordova-plugin-photos' ]
+10 verbose tarball /Users/a610/.npm/cordova-plugin-photos/1.0.1/package.tgz
+11 verbose folder /Users/a610/Documents/VaniBluepageV3/Cordova-plugins-photos/cordova-plugin-photos
+12 info prepublish cordova-plugin-photos@1.0.1
+13 verbose addLocalTarball adding from inside cache /Users/a610/.npm/cordova-plugin-photos/1.0.1/package.tgz
+14 silly cache afterAdd cordova-plugin-photos@1.0.1
+15 verbose afterAdd /Users/a610/.npm/cordova-plugin-photos/1.0.1/package/package.json not in flight; writing
+16 verbose afterAdd /Users/a610/.npm/cordova-plugin-photos/1.0.1/package/package.json written
+17 silly publish { name: 'cordova-plugin-photos',
+17 silly publish   version: '1.0.1',
+17 silly publish   description: 'Cordova-plugin-photos used for get photos from devices, add default value for index,max,width,height',
+17 silly publish   cordova: { id: 'cordova-plugin-photos', platforms: [ 'ios' ] },
+17 silly publish   repository:
+17 silly publish    { type: 'git',
+17 silly publish      url: 'git+https://github.com/ryouaki/Cordova-Plugin-Photos.git' },
+17 silly publish   keywords: [ 'cordova-ios', 'Photos', 'Thumb images', 'album' ],
+17 silly publish   author: { name: 'Ryouaki', url: '46517115@qq.com' },
+17 silly publish   readme: '这个是用于从设备读取图片缩略图和原始图片。\n\n具体使用方法下载该项目并解压，然后在你的工程目录执行\n\ncordova plugin add [path of plugin]\n\n##E.X.\n#获取缩略图：\nPhotos.getThumbPhotos(function(arguments){<br>\n      var objs = JSON.parse(arguments);<br>\n      。。。。。。<br>\n    }.bind(this),function(arguments){<br>\n      。。。。。。<br>\n    },[index,max,width,height]); <br>\n    // index default:0,max default:20,width default:30,height default:30<br>\n\nData format:<br>\n[{url:pic_id,data:...},...]<br>\n\n#获取原图：\nPhotos.getRealPhoto(function(arguments){<br>\n      var objs = JSON.parse(arguments);<br>\n      。。。。。。<br>\n    },function(arguments){<br>\n      。。。。。。<br>\n    },[param.url]);<br>\n{data:......}<br>\n\n目前仅支持ios，android版本会陆续更新。\n![image](https://github.com/ryouaki/Cordova-Plugin-Photos/blob/master/21B8E8ED5D4358FFBB5F5B7FD3C59D60.png)\n![image](https://github.com/ryouaki/Cordova-Plugin-Photos/blob/master/2FEB64EF6D6D57AE001A15E5C06A21BE.png)\n\n#------------------Update history------------------\n2016-01-11 : Add default value for api Photos.getThumbPhotos[index,max,width,height]\n\n#----------------------Author----------------------\n46517115@qq.com\nURL:https://github.com/ryouaki/Cordova-Plugin-Photos\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   bugs: { url: 'https://github.com/ryouaki/Cordova-Plugin-Photos/issues' },
+17 silly publish   homepage: 'https://github.com/ryouaki/Cordova-Plugin-Photos#readme',
+17 silly publish   _id: 'cordova-plugin-photos@1.0.1',
+17 silly publish   scripts: {},
+17 silly publish   _shasum: '5fa7d84f94515dcfd4770ed39593294a4f74e983',
+17 silly publish   _from: 'cordova-plugin-photos',
+17 silly publish   _resolved: 'file:cordova-plugin-photos' }
+18 verbose getPublishConfig undefined
+19 silly mapToRegistry name cordova-plugin-photos
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry http://registry.npm.taobao.org/
+22 silly mapToRegistry uri http://registry.npm.taobao.org/cordova-plugin-photos
+23 verbose publish registryBase http://registry.npm.taobao.org/
+24 silly publish uploading /Users/a610/.npm/cordova-plugin-photos/1.0.1/package.tgz
+25 verbose request uri http://registry.npm.taobao.org/cordova-plugin-photos
+26 verbose request sending authorization for write operation
+27 info attempt registry request try #1 at 13:40:46
+28 verbose request id de60b123a4b8a967
+29 http request PUT http://registry.npm.taobao.org/cordova-plugin-photos
+30 http 403 http://registry.npm.taobao.org/cordova-plugin-photos
+31 verbose headers { date: 'Mon, 11 Jan 2016 05:35:14 GMT',
+31 verbose headers   'content-type': 'application/json; charset=utf-8',
+31 verbose headers   'content-length': '87',
+31 verbose headers   connection: 'keep-alive',
+31 verbose headers   'x-readtime': '20' }
+32 verbose request invalidating /Users/a610/.npm/registry.npm.taobao.org/cordova-plugin-photos on PUT
+33 error publish Failed PUT 403
+34 verbose stack Error: no_perms Private mode enable, only admin can publish this module: cordova-plugin-photos
+34 verbose stack     at makeError (/Applications/node/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+34 verbose stack     at CachingRegistryClient.<anonymous> (/Applications/node/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+34 verbose stack     at Request._callback (/Applications/node/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+34 verbose stack     at Request.self.callback (/Applications/node/lib/node_modules/npm/node_modules/request/request.js:198:22)
+34 verbose stack     at emitTwo (events.js:87:13)
+34 verbose stack     at Request.emit (events.js:172:7)
+34 verbose stack     at Request.<anonymous> (/Applications/node/lib/node_modules/npm/node_modules/request/request.js:1063:14)
+34 verbose stack     at emitOne (events.js:82:20)
+34 verbose stack     at Request.emit (events.js:169:7)
+34 verbose stack     at IncomingMessage.<anonymous> (/Applications/node/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+35 verbose statusCode 403
+36 verbose pkgid cordova-plugin-photos
+37 verbose cwd /Users/a610/Documents/VaniBluepageV3/Cordova-plugins-photos
+38 error Darwin 14.5.0
+39 error argv "/Applications/node/bin/node" "/Applications/node/bin/npm" "publish" "./cordova-plugin-photos"
+40 error node v4.2.1
+41 error npm  v2.14.7
+42 error code E403
+43 error no_perms Private mode enable, only admin can publish this module: cordova-plugin-photos
+44 error If you need help, you may report this error at:
+44 error     <https://github.com/npm/npm/issues>
+45 verbose exit [ 1, true ]
